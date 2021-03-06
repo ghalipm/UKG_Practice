@@ -21,7 +21,7 @@ public class US7_stepDefinitions {
     BooksPage booksPage=new BooksPage();
     BorrowingBooksPage borrowingBooksPage=new BorrowingBooksPage();
 
-
+/*
     @Given("user on login page")
     public void user_on_login_page() {
         // Write code here that turns the phrase above into concrete actions
@@ -34,6 +34,8 @@ public class US7_stepDefinitions {
         // Write code here that turns the phrase above into concrete actions
         loginPage.login(string);
     }
+
+ */
 
     @Then("user can search books with categories")
     public void user_can_search_books_with_categories(List<String> expectedBooksCategoryText) {

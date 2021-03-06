@@ -68,7 +68,7 @@ public class US3_stepDefinitions extends BasePage {
         }
          */
 
-        //Assert.assertEquals(actualLibrarianModulesText, expectedLibrarianModules);
+        Assert.assertEquals(actualLibrarianModulesText, expectedLibrarianModules);
         System.out.println("actualLibrarianModulesText = " + actualLibrarianModulesText);
         System.out.println("expectedLibrarianModules = " + expectedLibrarianModules);
 
