@@ -39,6 +39,7 @@ public class US7_stepDefinitions {
     public void user_can_search_books_with_categories(List<String> expectedBooksCategoryText) {
         // Write code here that turns the phrase above into concrete actions
         Select select=new Select(booksPage.booksCategoryDropDown);
+        // if Select used twice in one method, it causes Stale or No such Element exception!
         List<WebElement> actualBooksCategoryWE=select.getOptions();
 
         List<String> actualBooksCategoryText=new ArrayList<>();

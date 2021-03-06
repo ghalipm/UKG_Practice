@@ -2,15 +2,21 @@ package com.libraryAutomation.pages;
 
 import com.github.javafaker.Faker;
 import com.libraryAutomation.utilities.BrowserUtils;
+import com.libraryAutomation.utilities.Driver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class UsersPage extends com.libraryAutomation.pages.BasePage {
+public class UsersPage extends BasePage {
 
 
     @FindBy(xpath = "//span[.='Users']" )
@@ -21,6 +27,9 @@ public class UsersPage extends com.libraryAutomation.pages.BasePage {
 
     @FindBy(id = "user_status")
     public WebElement statusDropDown;
+
+    @FindBy(xpath = "//select[@name='tbl_users_length']")
+    public WebElement recordsDropDown;
 
     Faker faker = new Faker();
 
@@ -83,15 +92,20 @@ public class UsersPage extends com.libraryAutomation.pages.BasePage {
         addUserLink.click();
         Select selectUserGroup = new Select(userGroupDropDown);
         Select selectStatus = new Select(statusDropDownOmer);
-        BrowserUtils.waitForVisibility(fullNameBox, 5);
+        BrowserUtils.waitForVisibility(fullNameBox, 1);
         fullNameBox.sendKeys(name);
         passwordBox.sendKeys(faker.internet().password());
         emailBox.sendKeys(faker.internet().emailAddress());
         selectUserGroup.selectByVisibleText("Students");
-        selectStatus.selectByVisibleText("ACTIVE");
-        endDateBox.sendKeys(futureDate.format(df));
+        selectStatus.selectByVisibleText("INACTIVE");
+        endDateBox.sendKeys(futureDate.format(df),Keys.ENTER);
         addressBox.sendKeys(faker.address().fullAddress());
-        saveChangesButton.click();
+    }
+
+    public void saveChanges(){saveChangesButton.click();}
+
+    public void closeAddUser(){
+        closeButton.click();
     }
 
     /*
@@ -101,5 +115,10 @@ public class UsersPage extends com.libraryAutomation.pages.BasePage {
 
     @FindBy(id = "user_groups")
     public WebElement userGroupDropdown;
+
+
+    public WebElement getAddUserLink(){
+        return addUserLink;
+    }
 
 }

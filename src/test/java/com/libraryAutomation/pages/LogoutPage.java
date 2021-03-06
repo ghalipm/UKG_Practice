@@ -3,7 +3,7 @@ package com.libraryAutomation.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LogoutPage extends com.libraryAutomation.pages.BasePage {
+public class LogoutPage extends BasePage {
 
     @FindBy(xpath = "//a[@id='navbarDropdown']")
     private WebElement logoutDropDrown;
