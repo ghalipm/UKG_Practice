@@ -57,13 +57,13 @@ public class US10_stepDefinitions {
     @When("the user click Status dropdown")
     public void the_user_click_status_dropdown() {
         // Write code here that turns the phrase above into concrete actions
-            usersPage.statusDropDown.click();
+            usersPage.userStatusDropDown.click();
     }
 
     @Then("the user should see the following options on user status:")
     public void the_user_should_see_the_following_options_on_user_status(List<String> expectedOptionsStatus) {
         // Write code here that turns the phrase above into concrete actions
-        Select select=new Select(usersPage.statusDropDown);
+        Select select=new Select(usersPage.userStatusDropDown);
         List<WebElement> statusOptions= select.getOptions();
         List<String> statusOptionsText=new ArrayList<>();
         // option1:

@@ -13,5 +13,15 @@ public class DashboardPage extends BasePage{
     @FindBy(xpath = "//span[@class='title']")
     public List<WebElement> librarianModules;
 
+    @FindBy(xpath = "(//h2)[1]")
+    public WebElement userNumbersWE;
+
+    public int getUsersNumber(){
+        String userNumbersText=userNumbersWE.getText();
+        int userNumbersInt;
+        userNumbersInt = Integer.parseInt(userNumbersText);
+        return userNumbersInt;
+    }
+
 
 }

@@ -5,3 +5,5 @@ Feature: librarian can add and edit a new user
     When the user click users module
     Then user can add users with all valid info
     And user able to close the add user window with "close" button
+    And Librarians able to edit user info
+
