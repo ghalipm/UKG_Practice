@@ -94,15 +94,17 @@ public class UsersPage extends BasePage {
         LocalDate today = LocalDate.now();
         LocalDate futureDate = today.plusYears(2);
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        BrowserUtils.waitForClickability(addUserLink,1);
+        BrowserUtils.waitForClickability(addUserLink,5);
         addUserLink.click();
         Select selectUserGroup = new Select(userGroupDropDown);
         Select selectStatus = new Select(statusDropDown);
-        BrowserUtils.waitForClickability(fullNameBox, 1);
+        BrowserUtils.waitForClickability(fullNameBox, 2);
         fullNameBox.sendKeys(name);
         passwordBox.sendKeys(faker.internet().password());
         emailBox.sendKeys(faker.internet().emailAddress());
+        BrowserUtils.waitForClickability(statusDropDown,1);
         selectUserGroup.selectByVisibleText("Students");
+        BrowserUtils.waitForClickability(userGroupDropDown,1);
         selectStatus.selectByVisibleText("INACTIVE");
         endDateBox.sendKeys(futureDate.format(df),Keys.ENTER);
         addressBox.sendKeys(faker.address().fullAddress());
@@ -123,7 +125,7 @@ public class UsersPage extends BasePage {
         List<String> userKey=new ArrayList<>();
         userKey.add(user_ID);
         userKey.add(user_FullName);
-        System.out.println("userKey = " + userKey);
+        //System.out.println("userKey = " + userKey);
 
         return userKey;
     }
@@ -134,7 +136,8 @@ public class UsersPage extends BasePage {
 
     public void editUserStatusUpdate(){
         String userStatusOld=fifthRowUserInfo.get(4).getText();
-        System.out.println("userStatusOld = " + userStatusOld);
+        //System.out.println("userStatusOld = " + userStatusOld);
+        BrowserUtils.waitForClickability(editFifthRowUser,5);
         editFifthRowUser.click();
         Select selectUserGroup = new Select(userGroupDropDown);
 
@@ -142,9 +145,10 @@ public class UsersPage extends BasePage {
             selectUserGroup.selectByIndex(0);
         }
         if(userStatusOld.equals("Librarian"))
-        {selectUserGroup.getFirstSelectedOption();}
+        {selectUserGroup.selectByIndex(1);}
+        BrowserUtils.waitForClickability(userGroupDropDown,1);
 
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
         saveChanges();
     }
 

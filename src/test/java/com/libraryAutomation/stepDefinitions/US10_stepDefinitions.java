@@ -64,6 +64,7 @@ public class US10_stepDefinitions {
     public void the_user_should_see_the_following_options_on_user_status(List<String> expectedOptionsStatus) {
         // Write code here that turns the phrase above into concrete actions
         Select select=new Select(usersPage.userStatusDropDown);
+        BrowserUtils.waitForClickability(usersPage.userStatusDropDown,2);
         List<WebElement> statusOptions= select.getOptions();
         List<String> statusOptionsText=new ArrayList<>();
         // option1:

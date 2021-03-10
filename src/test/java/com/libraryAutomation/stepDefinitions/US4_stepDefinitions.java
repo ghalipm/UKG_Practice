@@ -4,16 +4,10 @@ import com.libraryAutomation.pages.BasePage;
 import com.libraryAutomation.pages.DashboardPage;
 import com.libraryAutomation.pages.UsersPage;
 import com.libraryAutomation.utilities.BrowserUtils;
-import com.libraryAutomation.utilities.Driver;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 
 import java.util.List;
-
 
 public class US4_stepDefinitions extends BasePage {
 
@@ -54,14 +48,15 @@ public class US4_stepDefinitions extends BasePage {
         // info collected, now click to "Edit User" - open inside the method, then changes and saves.
         usersPage.editUserStatusUpdate();
         //wait until Alerts disappear and user rows become available.
-        BrowserUtils.fluentWait(usersPage.editFifthRowUser, 2);
+        // IF IT IS 1 SECOND IT COULD FAIL: STALE EXCEPTION, IT HAS TO BE 2 OR MORE
+        BrowserUtils.fluentWait(usersPage.editFifthRowUser, 5);
 
         List<String> keyAfter=usersPage.getUserKey();
         System.out.println("keyAfter = " + keyAfter);
 
         //String nonKeyAfter=usersPage.getUserUpdatableInfo();
-        BrowserUtils.fluentWait(usersPage.editFifthRowUser, 2);
-        Driver.getDriver().navigate().refresh();
+        BrowserUtils.waitForPageToLoad(5);
+        //Driver.getDriver().navigate().refresh();
         String nonKeyAfter=usersPage.fifthRowUserInfo.get(4).getText();
         System.out.println("nonKeyAfter = " + nonKeyAfter);
         Assert.assertEquals(keyBefore,keyAfter);
