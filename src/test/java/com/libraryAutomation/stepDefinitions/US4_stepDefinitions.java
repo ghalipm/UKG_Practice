@@ -49,7 +49,7 @@ public class US4_stepDefinitions extends BasePage {
         usersPage.editUserStatusUpdate();
         //wait until Alerts disappear and user rows become available.
         // IF IT IS 1 SECOND IT COULD FAIL: STALE EXCEPTION, IT HAS TO BE 2 OR MORE
-        BrowserUtils.fluentWait(usersPage.editFifthRowUser, 5);
+        BrowserUtils.waitForClickability(usersPage.editFifthRowUser, 5);
 
         List<String> keyAfter=usersPage.getUserKey();
         System.out.println("keyAfter = " + keyAfter);
