@@ -31,6 +31,7 @@ public class SimpleTest {
 
         assertEquals(bookCountDB, bookCountUI );
 
+        System.out.println("bookCountDB = " + bookCountDB);
 
         DB_Utility.destroy();
 
