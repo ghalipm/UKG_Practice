@@ -35,10 +35,32 @@ public class HomePage extends BasePage{
     @FindBy(xpath="//h1")
     public WebElement contactHeader;
 
+    @FindBy(xpath="(//a[@href='/support'])[1]")
+    public WebElement supportTab;
+
+    @FindBy(xpath="//h1[.=' UKG Support ']")
+    public WebElement supportHeader;
+
+    @FindBy(xpath="(//a[.='Blogs'])[1]")
+    public WebElement blogTab;
+
+    @FindBy(xpath="(//h1[.=' UKG Blogs '])[1]")
+    public WebElement blogHeader;
+
+    @FindBy(xpath="(//a[.='Careers'])[1]")
+    public WebElement careerTab;
+
+    @FindBy(xpath="(//h2[.=' Search Jobs '])[1]")
+    public WebElement careerHeader;
 
 
-    @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
-    public WebElement solutionsNameList;
+    @FindBy(xpath="//a[@class='uk-navbar-toggle icon-globe ukg-icon-primary']")
+    public WebElement globTab;
+
+    @FindBy(xpath="//ul[@class='uk-nav uk-navbar-dropdown-nav']")
+    public WebElement globIconWE;
+
+
 
     /*
     @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")

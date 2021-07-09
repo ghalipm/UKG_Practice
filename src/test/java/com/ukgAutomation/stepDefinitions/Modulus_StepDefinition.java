@@ -143,6 +143,79 @@ public class Modulus_StepDefinition {
     }
 
 
+    @When("the user clicks on the support modulus")
+    public void the_user_clicks_on_the_support_modulus() {
+        homePage.supportTab.click();
+    }
+
+    @Then("the user should see the UKG Support header")
+    public void the_user_should_see_the_ukg_support_header() {
+        String expectedSupport="UKG Support";
+        System.out.println("homePage.supportHeader.getText() = " + homePage.supportHeader.getText());
+        System.out.println("expectedSupport = " + expectedSupport);
+        Assert.assertTrue(expectedSupport.equals(homePage.supportHeader.getText().trim()));
+    }
+
+
+    @When("the user clicks on the Blog modulus")
+    public void the_user_clicks_on_the_blog_modulus() {
+      homePage.blogTab.click();
+    }
+
+    @Then("the user should see the UKG Blog header")
+    public void the_user_should_see_the_ukg_blog_header() {
+        String expectedBlog=" UKG Blogs ";
+        System.out.println("expectedBlog = " + expectedBlog);
+        System.out.println("homePage.blogHeader.getText() = " + homePage.blogHeader.getText());
+
+        Assert.assertTrue(expectedBlog.trim().equals(homePage.blogHeader.getText().trim()));
+    }
+
+
+    @When("the user clicks on the career modulus")
+    public void the_user_clicks_on_the_career_modulus() {
+        homePage.careerTab.click();
+    }
+
+    @Then("the user should see the  Search Jobs  header")
+    public void the_user_should_see_the_search_jobs_header() {
+        String expectedText=" Search Jobs ";
+        System.out.println("expectedText = " + expectedText);
+        System.out.println("homePage.careerHeader.getText() = " + homePage.careerHeader.getText());
+        Assert.assertTrue(expectedText.trim().equals(homePage.careerHeader.getText().trim()));
+
+    }
+
+
+    @When("the user clicks on the globe modulus")
+    public void the_user_clicks_on_the_globe_modulus() {
+        homePage.globTab.click();
+
+    }
+
+    @Then("the user should see the languages  list:")
+    public void the_user_should_see_the_languages_list(List<String> expectedText) {
+        System.out.println("homePage.globText.getText() = " + homePage.globIconWE.getText());
+        String actualText=homePage.globIconWE.getText();
+        System.out.println("expectedText = " + expectedText);
+
+
+        for (int i = 0; i < expectedText.size(); i++) {
+            // asserts that everything in expectedList is inside the actualNamesList
+            Assert.assertTrue("got difference!", actualText.contains(expectedText.get(i)));
+            // remove everything in expectedList from the actualNamesList once
+            actualText=replaceOnce(actualText, expectedText.get(i), "");
+
+        }
+        //actualNamesList might have white space only at best
+        System.out.println("actualNamesList size = " + actualText.trim().length());
+        // text content of actualNamesList and expectedNamesList is the same.
+        Assert.assertTrue("no more chars in actual text", actualText.trim().length()==0);
+        //System.out.println("actualNamesList = " + actualNamesList);
+
+    }
+
+
 
 
 }

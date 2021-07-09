@@ -39,6 +39,35 @@ Feature: Users verifying several modules
     When the user clicks on the contact modulus
     Then the user should see the Contact UKG header
 
+  Scenario: accessing support modulus
+    Given user is on homepage
+    When the user clicks on the support modulus
+    Then the user should see the UKG Support header
+
+  Scenario: accessing blog modulus
+    Given user is on homepage
+    When the user clicks on the Blog modulus
+    Then the user should see the UKG Blog header
+
+  Scenario: accessing career modulus
+    Given user is on homepage
+    When the user clicks on the career modulus
+    Then the user should see the  Search Jobs  header
+
+  Scenario: accessing glob-Icon modulus
+    Given user is on homepage
+    When the user clicks on the globe modulus
+    Then the user should see the languages  list:
+      | English                   |
+      | English (United Kingdom)  |
+      | English (Australia)       |
+      | Français (Canada)         |
+      | Français                  |
+      | Español (México)          |
+      | Español (España)          |
+      | Deutsch                   |
+      | Nederlands                |
+
 #Ayjamal version
 # Feature: Accessing the different modules
 #  @wip1
