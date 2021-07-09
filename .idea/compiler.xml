@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="libraryCT_Own" />
+        <module name="ukg-cucumber-junit" />
       </profile>
     </annotationProcessing>
   </component>

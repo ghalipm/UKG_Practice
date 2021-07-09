@@ -1,4 +1,4 @@
-package com.libraryAutomation.utilities;
+package com.ukgAutomation.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -27,17 +27,17 @@ public class BrowserUtils {
      * returns to original window if windows with given title not found
      */
     public static void switchToWindow(String targetTitle) {
-        String origin = com.libraryAutomation.utilities.Driver.getDriver().getWindowHandle();
-        for (String handle : com.libraryAutomation.utilities.Driver.getDriver().getWindowHandles()) {
-            com.libraryAutomation.utilities.Driver.getDriver().switchTo().window(handle);
-            if (com.libraryAutomation.utilities.Driver.getDriver().getTitle().equals(targetTitle)) {
+        String origin = com.ukgAutomation.utilities.Driver.getDriver().getWindowHandle();
+        for (String handle : com.ukgAutomation.utilities.Driver.getDriver().getWindowHandles()) {
+            com.ukgAutomation.utilities.Driver.getDriver().switchTo().window(handle);
+            if (com.ukgAutomation.utilities.Driver.getDriver().getTitle().equals(targetTitle)) {
                 return;
             }
         }
-        com.libraryAutomation.utilities.Driver.getDriver().switchTo().window(origin);
+        com.ukgAutomation.utilities.Driver.getDriver().switchTo().window(origin);
     }
     public static void hover(WebElement element) {
-        Actions actions = new Actions(com.libraryAutomation.utilities.Driver.getDriver());
+        Actions actions = new Actions(com.ukgAutomation.utilities.Driver.getDriver());
         actions.moveToElement(element).perform();
     }
     /**
@@ -54,7 +54,7 @@ public class BrowserUtils {
         return elemTexts;
     }
     public static List<String> getElementsText(By locator) {
-        List<WebElement> elems = com.libraryAutomation.utilities.Driver.getDriver().findElements(locator);
+        List<WebElement> elems = com.ukgAutomation.utilities.Driver.getDriver().findElements(locator);
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : elems) {
             elemTexts.add(el.getText());
@@ -62,19 +62,19 @@ public class BrowserUtils {
         return elemTexts;
     }
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(com.libraryAutomation.utilities.Driver.getDriver(), timeToWaitInSec);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static WebElement waitForVisibility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.libraryAutomation.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     public static WebElement waitForClickability(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.libraryAutomation.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     public static WebElement waitForClickability(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.libraryAutomation.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     public static void waitForPageToLoad(long timeOutInSeconds) {
@@ -85,7 +85,7 @@ public class BrowserUtils {
         };
         try {
             System.out.println("Waiting for page to load...");
-            WebDriverWait wait = new WebDriverWait(com.libraryAutomation.utilities.Driver.getDriver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeOutInSeconds);
             wait.until(expectation);
         } catch (Throwable error) {
             System.out.println(
@@ -93,7 +93,7 @@ public class BrowserUtils {
         }
     }
     public static WebElement fluentWait(final WebElement webElement, int timeinsec) {
-        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(com.libraryAutomation.utilities.Driver.getDriver())
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(com.ukgAutomation.utilities.Driver.getDriver())
                 .withTimeout(Duration.ofSeconds(timeinsec))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
@@ -112,7 +112,7 @@ public class BrowserUtils {
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            Assert.assertTrue("Element not visible: " + by, com.libraryAutomation.utilities.Driver.getDriver().findElement(by).isDisplayed());
+            Assert.assertTrue("Element not visible: " + by, com.ukgAutomation.utilities.Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Element not found: " + by);
         }
@@ -189,8 +189,8 @@ public class BrowserUtils {
      * @param element
      */
     public void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) com.libraryAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) com.libraryAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
     /**
      * Scrolls down to an element using JavaScript
@@ -198,7 +198,7 @@ public class BrowserUtils {
      * @param element
      */
     public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) com.libraryAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
     /**
      * Performs double click action on an element
@@ -206,7 +206,7 @@ public class BrowserUtils {
      * @param element
      */
     public void doubleClick(WebElement element) {
-        new Actions(com.libraryAutomation.utilities.Driver.getDriver()).doubleClick(element).build().perform();
+        new Actions(com.ukgAutomation.utilities.Driver.getDriver()).doubleClick(element).build().perform();
     }
     /**
      * Changes the HTML attribute of a Web Element to the given value using JavaScript
@@ -216,7 +216,7 @@ public class BrowserUtils {
      * @param attributeValue
      */
     public void setAttribute(WebElement element, String attributeName, String attributeValue) {
-        ((JavascriptExecutor) com.libraryAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
+        ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
     }
     /**
      * @param element

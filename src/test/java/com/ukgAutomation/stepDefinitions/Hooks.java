@@ -1,12 +1,10 @@
-package com.libraryAutomation.stepDefinitions;
+package com.ukgAutomation.stepDefinitions;
 
 
-import com.libraryAutomation.utilities.BrowserUtils;
-import com.libraryAutomation.utilities.Driver;
+import com.ukgAutomation.utilities.BrowserUtils;
+import com.ukgAutomation.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 

@@ -1,4 +1,4 @@
-package com.libraryAutomation.runner;
+package com.ukgAutomation.runner;
 
 
 import io.cucumber.junit.Cucumber;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"
         },
         features = "src/test/resources/features",
-        glue = "com/libraryAutomation/stepDefinitions",
+        glue = "com/ukgAutomation/stepDefinitions",
         dryRun = false,
         tags= ""
 

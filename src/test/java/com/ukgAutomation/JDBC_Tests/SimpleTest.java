@@ -1,7 +1,7 @@
-package com.libraryAutomation.JDBC_Tests;
+package com.ukgAutomation.JDBC_Tests;
 
-import com.libraryAutomation.utilities.ConfigurationReader;
-import com.libraryAutomation.utilities.DB_Utility;
+import com.ukgAutomation.utilities.ConfigurationReader;
+import com.ukgAutomation.utilities.DB_Utility;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,10 +16,10 @@ public class SimpleTest {
     public void testDashboardNumbers(){
 
         int userCountUI = 8553 ;
-        int bookCountUI = 2015 ;
+        int bookCountUI = 3493 ;
         int borrowedBookCountUI = 800 ;
 
-        String url      = com.libraryAutomation.utilities.ConfigurationReader.getProperty("library1.database.url");
+        String url      = com.ukgAutomation.utilities.ConfigurationReader.getProperty("library1.database.url");
         String username = ConfigurationReader.getProperty("library1.database.username");
         String password = ConfigurationReader.getProperty("library1.database.password");
 
@@ -28,10 +28,10 @@ public class SimpleTest {
 
         String bookCountDB_Str =  DB_Utility.getFirstRowFirstColumn();
         int bookCountDB = Integer.parseInt(bookCountDB_Str) ;
+        //assertEquals(expected, actual)
+        assertEquals(bookCountUI, bookCountDB);
 
-        assertEquals(bookCountDB, bookCountUI );
-
-        System.out.println("bookCountDB = " + bookCountDB);
+        System.out.println("actual book count from DB = " + bookCountDB);
 
         DB_Utility.destroy();
 
