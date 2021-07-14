@@ -95,7 +95,7 @@ public class ContactSalesFormPage extends BasePage{
         Select selectProvince = new Select(provinceDropDown);
         Select selectTimeFrame = new Select(timeFrameDropDown);
 
-        Faker faker=new Faker();
+        Faker faker = new Faker();
 
         String firstName = faker.name().firstName();
         firstNameField.clear();
@@ -118,8 +118,11 @@ public class ContactSalesFormPage extends BasePage{
         companyNameField.clear();
         companyNameField.sendKeys(faker.company().name());
 
-        int numberOfCountries=selectCountry.getOptions().size();
+        int numberOfCountries = selectCountry.getOptions().size();
         //numberOfCountries = 247
+
+        /*
+
         //any country in the list until the index reaches 40 to avoid US and Canada
         int countryIndex=random.nextInt(40);
         int canadaIndex=40+1;
@@ -128,54 +131,81 @@ public class ContactSalesFormPage extends BasePage{
         //selectCountry.selectByIndex(countryIndex);
         selectCountry.selectByIndex(countryIndex_between_US_Canada);
 
-        //selectCountry.selectByIndex(40); // Canada
-        //selectCountry.selectByIndex(235); // US
-
-
-        /*
-        // Canada:
-        selectCountry.selectByVisibleText("Canada");
-        //int upperBoundCanada=14;
-        int upperBoundCanada=selectProvince.getOptions().size();
-        System.out.println("upperBoundCanada = " + upperBoundCanada);
-        int provinceIndex=random.nextInt(upperBoundCanada);
-        //selectProvince.selectByVisibleText("Alberta");
-        selectProvince.selectByIndex(provinceIndex);
          */
 
-        /*
+        // choose an index for a country
+        int countryIndex = random.nextInt(numberOfCountries);
+        // pick the country for the chosen index
+        selectCountry.selectByIndex(countryIndex);
 
-        // US
-        selectCountry.selectByVisibleText("United States of America");
-        //selectState.getFirstSelectedOption(); // does not work well
-        //selectState.selectByVisibleText("Alabama"); // works well
-        int upperBoundUS=selectState.getOptions().size();
-        System.out.println("upperBoundUS = " + upperBoundUS);
-        int stateIndex=random.nextInt(upperBoundUS);
-        //selectState.selectByIndex(2); // works well
-        selectState.selectByIndex(stateIndex); // works well
+        //selectCountry.selectByIndex(40); // --> Canada
+        // if the country is Canada
+        if (countryIndex == 40) {
+            //selectCountry.selectByIndex(countryIndex);
+            int numberOfCanadianProvinces = selectProvince.getOptions().size();
+            int provinceIndex = random.nextInt(numberOfCanadianProvinces);
+            selectProvince.selectByIndex(provinceIndex);
+        }
+        //selectCountry.selectByIndex(235); // --> US
+        // if the country is US
+        else if (countryIndex == 235) {
+            //selectCountry.selectByIndex(countryIndex);
+            int numberOfStates = selectState.getOptions().size();
+            int stateIndex = random.nextInt(numberOfStates);
+            selectState.selectByIndex(stateIndex);
+            //selectState.selectByIndex(2); // works well
 
-         */
+        } else {
+            //do nothing, just continue;
+        }
 
 
-        addressField.clear();
-        addressField.sendKeys(faker.address().streetAddress());
+            /*
+            // Canada:
+            selectCountry.selectByVisibleText("Canada");
+            //int upperBoundCanada=14;
+            int upperBoundCanada=selectProvince.getOptions().size();
+            System.out.println("upperBoundCanada = " + upperBoundCanada);
+            int provinceIndex=random.nextInt(upperBoundCanada);
+            //selectProvince.selectByVisibleText("Alberta");
+            selectProvince.selectByIndex(provinceIndex);
+             */
 
-        cityField.clear();
-        cityField.sendKeys(faker.address().city());
+            /*
 
-        zipCodeField.clear();
-        zipCodeField.sendKeys(faker.address().zipCode());
+            // US
+            selectCountry.selectByVisibleText("United States of America");
+            //selectState.getFirstSelectedOption(); // does not work well
+            //selectState.selectByVisibleText("Alabama"); // works well
+            int upperBoundUS=selectState.getOptions().size();
+            System.out.println("upperBoundUS = " + upperBoundUS);
+            int stateIndex=random.nextInt(upperBoundUS);
+            //selectState.selectByIndex(2); // works well
+            selectState.selectByIndex(stateIndex); // works well
 
-        totalEmployeesField.sendKeys(faker.number().digit());
+             */
 
-        selectTimeFrame.selectByIndex(3);
 
-        commenting();
-         //submit the form
-         submitForm();
+            addressField.clear();
+            addressField.sendKeys(faker.address().streetAddress());
 
-    }
+            cityField.clear();
+            cityField.sendKeys(faker.address().city());
+
+            zipCodeField.clear();
+            zipCodeField.sendKeys(faker.address().zipCode());
+
+            totalEmployeesField.sendKeys(faker.number().digit());
+
+            selectTimeFrame.selectByIndex(3);
+
+            commenting();
+            //submit the form
+            submitForm();
+
+        }
+
+
 
 
 
