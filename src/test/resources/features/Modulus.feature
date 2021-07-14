@@ -1,3 +1,4 @@
+@smoke
 Feature: Users verifying several modules
 
   Scenario: users accessing Solution module
@@ -39,6 +40,19 @@ Feature: Users verifying several modules
     When the user clicks on the contact modulus
     Then the user should see the Contact UKG header
 
+
+
+    # filling contact sales form
+    # fill the forms under contact using Java Fakers!!!
+  Scenario: users should be able fill contact sales form
+    Given user is on homepage
+    When the user clicks on the contact modulus
+    Then the user should see the Contact Sales form
+    Then user can fill the form with valid info and be able to send by clicking "LEARN MORE" button
+    Then verify that user be able to see "contact-thank-you" message
+
+
+
   Scenario: accessing support modulus
     Given user is on homepage
     When the user clicks on the support modulus
@@ -54,19 +68,20 @@ Feature: Users verifying several modules
     When the user clicks on the career modulus
     Then the user should see the  Search Jobs  header
 
+
   Scenario: accessing glob-Icon modulus
     Given user is on homepage
     When the user clicks on the globe modulus
     Then the user should see the languages  list:
-      | English                   |
-      | English (United Kingdom)  |
-      | English (Australia)       |
-      | Français (Canada)         |
-      | Français                  |
-      | Español (México)          |
-      | Español (España)          |
-      | Deutsch                   |
-      | Nederlands                |
+      | English                  |
+      | English (United Kingdom) |
+      | English (Australia)      |
+      | Français (Canada)        |
+      | Français                 |
+      | Español (México)         |
+      | Español (España)         |
+      | Deutsch                  |
+      | Nederlands               |
 
 #Ayjamal version
 # Feature: Accessing the different modules

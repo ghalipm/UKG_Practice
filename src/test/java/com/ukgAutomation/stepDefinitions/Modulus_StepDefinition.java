@@ -1,5 +1,6 @@
 package com.ukgAutomation.stepDefinitions;
 
+import com.ukgAutomation.pages.ContactSalesFormPage;
 import com.ukgAutomation.pages.HomePage;
 import com.ukgAutomation.utilities.ConfigurationReader;
 import com.ukgAutomation.utilities.Driver;
@@ -15,6 +16,7 @@ import static org.apache.commons.lang3.StringUtils.replaceOnce;
 public class Modulus_StepDefinition {
 
     HomePage homePage=new HomePage();
+    ContactSalesFormPage contactSalesFormPage=new ContactSalesFormPage();
 
     @Given("user is on homepage")
     public void user_is_on_homepage() {
@@ -214,6 +216,30 @@ public class Modulus_StepDefinition {
         //System.out.println("actualNamesList = " + actualNamesList);
 
     }
+
+    // Contact Sales Form:
+    @Then("the user should see the Contact Sales form")
+    public void the_user_should_see_the_contact_sales_form() {
+        homePage.contactTab.click();
+    }
+
+    @Then("user can fill the form with valid info and be able to send by clicking {string} button")
+    public void user_can_fill_the_form_with_valid_info_and_be_able_to_send_by_clicking_button(String string) throws InterruptedException {
+       // tick the customer box
+        contactSalesFormPage.tickCustomerBox();
+       // fill the form
+       contactSalesFormPage.fillingTheForm();
+
+
+    }
+
+
+    @Then("verify that user be able to see {string} message")
+    public void verify_that_user_be_able_to_see_that_url_contains_message(String string) {
+        contactSalesFormPage.thankYouHeader.isDisplayed();
+
+    }
+
 
 
 
