@@ -197,7 +197,9 @@ public class ContactSalesFormPage extends BasePage{
 
             totalEmployeesField.sendKeys(faker.number().digit());
 
-            selectTimeFrame.selectByIndex(3);
+            int numberOfChoices=selectTimeFrame.getOptions().size();
+            int optionIndex=random.nextInt(numberOfChoices);
+            selectTimeFrame.selectByIndex(optionIndex);
 
             commenting();
             //submit the form
