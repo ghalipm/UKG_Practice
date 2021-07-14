@@ -79,7 +79,7 @@ public class ContactSalesFormPage extends BasePage{
     // placing comments:
     public void commenting(){
         commentsField.clear();
-        commentsField.sendKeys("Hello from Ghalipm. I automated your webpage as an example. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
+        commentsField.sendKeys("Hello from Ghalipm (ghalipm@gmail.com). I automated your webpage as an example. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
     }
 
     // submit the form:
@@ -122,8 +122,8 @@ public class ContactSalesFormPage extends BasePage{
         //numberOfCountries = 247
         //any country in the list until the index reaches 40 to avoid US and Canada
         int countryIndex=random.nextInt(40);
-        int canadaIndex=40;
-        int usIndex=235;
+        int canadaIndex=40+1;
+        int usIndex=235-1;
         int countryIndex_between_US_Canada = (int)Math.floor(Math.random()*(usIndex-canadaIndex+1)+canadaIndex);
         //selectCountry.selectByIndex(countryIndex);
         selectCountry.selectByIndex(countryIndex_between_US_Canada);
