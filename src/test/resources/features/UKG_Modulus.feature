@@ -76,6 +76,7 @@ Feature: Users verifying several modules
       | English                  |
       | English (United Kingdom) |
       | English (Australia)      |
+      | English (India)          |
       | Français (Canada)        |
       | Français                 |
       | Español (México)         |

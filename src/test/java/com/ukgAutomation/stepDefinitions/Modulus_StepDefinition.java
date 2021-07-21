@@ -2,6 +2,7 @@ package com.ukgAutomation.stepDefinitions;
 
 import com.ukgAutomation.pages.ContactSalesFormPage;
 import com.ukgAutomation.pages.HomePage;
+import com.ukgAutomation.utilities.BrowserUtils;
 import com.ukgAutomation.utilities.ConfigurationReader;
 import com.ukgAutomation.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -44,13 +45,13 @@ public class Modulus_StepDefinition {
             // asserts that everything in expectedList is inside the actualNamesList
             Assert.assertTrue("got difference!", actualNamesList.contains(expectedNamesList.get(i)));
            // remove everything in expectedList from the actualNamesList once
-            actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "");
+            actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "").trim();
 
         }
         //actualNamesList might have white space only at best
         System.out.println("actualNamesList size = " + actualNamesList.trim().length());
         // text content of actualNamesList and expectedNamesList is the same.
-        Assert.assertTrue("no more chars in actual text", actualNamesList.trim().length()==0);
+        Assert.assertTrue("still some chars in actual text", actualNamesList.trim().length()==0);
         //System.out.println("actualNamesList = " + actualNamesList);
 
     }
@@ -197,8 +198,10 @@ public class Modulus_StepDefinition {
 
     @Then("the user should see the languages  list:")
     public void the_user_should_see_the_languages_list(List<String> expectedText) {
-        System.out.println("homePage.globText.getText() = " + homePage.globIconWE.getText());
+        BrowserUtils.waitForVisibility(homePage.globIconWE, 1);
         String actualText=homePage.globIconWE.getText();
+        System.out.println("==========actual text before replacement=====");
+        System.out.println("actualText = " + actualText);
         System.out.println("expectedText = " + expectedText);
 
 
@@ -206,14 +209,16 @@ public class Modulus_StepDefinition {
             // asserts that everything in expectedList is inside the actualNamesList
             Assert.assertTrue("got difference!", actualText.contains(expectedText.get(i)));
             // remove everything in expectedList from the actualNamesList once
-            actualText=replaceOnce(actualText, expectedText.get(i), "");
+            actualText=replaceOnce(actualText, expectedText.get(i), " ").trim();
 
         }
-        //actualNamesList might have white space only at best
-        System.out.println("actualNamesList size = " + actualText.trim().length());
+        System.out.println("==========actual text after replacement=====");
+        System.out.println("actualText = " + actualText);
+        //actualText has no more elements, or has zero elements.
+        System.out.println("actualNamesList size = " + actualText.length());
         // text content of actualNamesList and expectedNamesList is the same.
-        Assert.assertTrue("no more chars in actual text", actualText.trim().length()==0);
-        //System.out.println("actualNamesList = " + actualNamesList);
+        Assert.assertTrue("still some chars in actual text", actualText.length()==0);
+
 
     }
 

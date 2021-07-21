@@ -79,7 +79,7 @@ public class ContactSalesFormPage extends BasePage{
     // placing comments:
     public void commenting(){
         commentsField.clear();
-        commentsField.sendKeys("Hello from Ghalipm (ghalipm@gmail.com). I automated your webpage as an example. I do also scheduling. If you have challenging scheduling problem, let me know. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
+        commentsField.sendKeys("Hello from Ghalipm (ghalipm@gmail.com). I automated your webpage as an example. I do also scheduling. If you are interested in hiring me, contact me. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
     }
 
     // submit the form:
