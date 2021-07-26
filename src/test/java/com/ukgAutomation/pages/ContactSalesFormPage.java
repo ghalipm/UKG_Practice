@@ -63,8 +63,11 @@ public class ContactSalesFormPage extends BasePage{
     // project under my GitHub: https://github.com/ghalipm/UKG_Practice
 
 
-    @FindBy(xpath="//*[@id='edit-actions-submit']")
+    //@FindBy(xpath="//*[@id='edit-actions-submit']")
+    @FindBy(id="edit-actions-submit")
     public WebElement submitButton;
+
+    //input[@id='edit-actions-submit']
 
     @FindBy(xpath="//h2[.='Thank You']")
     public WebElement thankYouHeader;
@@ -79,17 +82,18 @@ public class ContactSalesFormPage extends BasePage{
     // placing comments:
     public void commenting(){
         commentsField.clear();
-        commentsField.sendKeys("Hello from Ghalipm (ghalipm@gmail.com). I automated your webpage as an example. I do also scheduling. If you are interested in hiring me, contact me. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
+        commentsField.sendKeys("Hello from Ghalip (ghalipm@gmail.com). I automated your webpage as an example. I do also scheduling. If you are interested in hiring me, contact me. Check out my GitHub: https://github.com/ghalipm/UKG_Practice");
     }
 
     // submit the form:
     public void submitForm(){
         //submitButton.click(); // click did not work, but submit did the job!
+
         submitButton.submit();
     }
 
     // filling the form:
-    public void fillingTheForm() throws InterruptedException {
+    public void fillingTheForm()  {
         Select selectCountry = new Select(countryNameDropDown);
         Select selectState = new Select(stateDropDown);
         Select selectProvince = new Select(provinceDropDown);
@@ -97,14 +101,16 @@ public class ContactSalesFormPage extends BasePage{
 
         Faker faker = new Faker();
 
-        String firstName = faker.name().firstName();
-        firstNameField.clear();
-        firstNameField.sendKeys(firstName);
 
-        String lastName = faker.name().lastName();
+        totalEmployeesField.clear();
+        totalEmployeesField.sendKeys(faker.number().digit());
+        selectTimeFrame.selectByIndex(random.nextInt(selectTimeFrame.getOptions().size()));
+        commenting();
 
-        lastNameField.clear();
-        lastNameField.sendKeys(lastName);
+
+
+        firstNameField.sendKeys(faker.name().firstName());
+        lastNameField.sendKeys(faker.name().lastName());
 
         emailField.clear();
         emailField.sendKeys(faker.internet().emailAddress());
@@ -145,6 +151,11 @@ public class ContactSalesFormPage extends BasePage{
             int numberOfCanadianProvinces = selectProvince.getOptions().size();
             int provinceIndex = random.nextInt(numberOfCanadianProvinces);
             selectProvince.selectByIndex(provinceIndex);
+
+            addressField.sendKeys(faker.address().streetAddress());
+            cityField.sendKeys(faker.address().city());
+            zipCodeField.sendKeys(faker.address().zipCode());
+
         }
         //selectCountry.selectByIndex(235); // --> US
         // if the country is US
@@ -155,9 +166,17 @@ public class ContactSalesFormPage extends BasePage{
             selectState.selectByIndex(stateIndex);
             //selectState.selectByIndex(2); // works well
 
+            addressField.sendKeys(faker.address().streetAddress());
+            cityField.sendKeys(faker.address().city());
+            zipCodeField.sendKeys(faker.address().zipCode());
+
         } else {
             //do nothing, just continue;
         }
+
+
+        //submit the form
+        submitForm();
 
 
             /*
@@ -184,26 +203,6 @@ public class ContactSalesFormPage extends BasePage{
             selectState.selectByIndex(stateIndex); // works well
 
              */
-
-
-            addressField.clear();
-            addressField.sendKeys(faker.address().streetAddress());
-
-            cityField.clear();
-            cityField.sendKeys(faker.address().city());
-
-            zipCodeField.clear();
-            zipCodeField.sendKeys(faker.address().zipCode());
-
-            totalEmployeesField.sendKeys(faker.number().digit());
-
-            int numberOfChoices=selectTimeFrame.getOptions().size();
-            int optionIndex=random.nextInt(numberOfChoices);
-            selectTimeFrame.selectByIndex(optionIndex);
-
-            commenting();
-            //submit the form
-            submitForm();
 
         }
 

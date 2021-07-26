@@ -20,7 +20,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//a[.='Partners'])[2]")
     public WebElement partnersTab;
 
-    @FindBy(xpath="/html/body/div[2]/div[3]/div/div[1]/div[2]/nav/ul/li[4]/div")
+    @FindBy(xpath="(//*[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[2]")
     public WebElement partnersName;
 
     @FindBy(xpath="(//a[.='About Us'])[2]")

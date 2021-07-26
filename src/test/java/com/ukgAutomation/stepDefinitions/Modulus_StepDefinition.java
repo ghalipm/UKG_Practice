@@ -233,15 +233,16 @@ public class Modulus_StepDefinition {
        // tick the customer box
         contactSalesFormPage.tickCustomerBox();
        // fill the form
+        BrowserUtils.waitForClickability(contactSalesFormPage.submitButton,1);
        contactSalesFormPage.fillingTheForm();
-
 
     }
 
 
     @Then("verify that user be able to see {string} message")
     public void verify_that_user_be_able_to_see_that_url_contains_message(String string) {
-        contactSalesFormPage.thankYouHeader.isDisplayed();
+
+        Assert.assertTrue(contactSalesFormPage.thankYouHeader.isDisplayed());
 
     }
 
