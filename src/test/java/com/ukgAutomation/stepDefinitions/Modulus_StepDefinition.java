@@ -22,7 +22,9 @@ public class Modulus_StepDefinition {
     @Given("user is on homepage")
     public void user_is_on_homepage() {
         // Write code here that turns the phrase above into concrete actions
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("url1"));
+        homePage.popUpDisagreeAndClose.click();
+
     }
 
     @When("the user clicks on the Solution module")
@@ -96,6 +98,7 @@ public class Modulus_StepDefinition {
         System.out.println("expectedPartnersList = " + expectedPartnersList);
         //System.out.println("homePage.partnersName = " + homePage.partnersName.getText());
 
+        BrowserUtils.waitForVisibility(homePage.partnersName,2);
         String actualPartnersNames=homePage.partnersName.getText();
         System.out.println("actualPartnersNames = " + actualPartnersNames);
 

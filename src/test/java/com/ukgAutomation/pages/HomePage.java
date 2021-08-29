@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage{
 
+    @FindBy(xpath="//span[.='Disagree and close']")
+    public WebElement popUpDisagreeAndClose;
+
     @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
     public WebElement solutionsTab;
 

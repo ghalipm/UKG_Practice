@@ -29,6 +29,8 @@ Feature: Users verifying several modules
       | Resellers                 |
       | Service Partners          |
       | Technology Partners       |
+      | Become a Partner          |
+
 
   Scenario: accessing about us modulus
     Given user is on homepage
@@ -50,7 +52,6 @@ Feature: Users verifying several modules
     Then the user should see the Contact Sales form
     Then user can fill the form with valid info and be able to send by clicking "LEARN MORE" button
     Then verify that user be able to see "contact-thank-you" message
-
 
 
   Scenario: accessing support modulus
@@ -84,18 +85,7 @@ Feature: Users verifying several modules
       | Deutsch                  |
       | Nederlands               |
 
-#Ayjamal version
-# Feature: Accessing the different modules
-#  @wip1
-#Scenario: Users should be able to access the Solutions list
-#  Given User is on the main page
-#  When User click Solutions tab
-#  Then User should see following names in the list
-#    | UKG Solutions          |
-#    | UKG Pro                |
-#    | UKG Dimensions         |
-#    | UKG Ready              |
-#    | UKG HR Service Delivery|
+
 
 
 
