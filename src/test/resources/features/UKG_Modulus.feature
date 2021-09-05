@@ -75,6 +75,7 @@ Feature: Users verifying several modules
     When the user clicks on the globe modulus
     Then the user should see the languages  list:
       | English                  |
+      | English (Canada)         |
       | English (United Kingdom) |
       | English (Australia)      |
       | English (India)          |
