@@ -33,12 +33,12 @@ public class Modulus_StepDefinition {
         homePage.clickOn(homePage.solutionsTab);
     }
 
-    @Then("the user should see the links:")
-    public void the_user_should_see_the_links(List<String> expectedNamesList) {
+    @Then("the user should see the Product Suites sub tab:")
+    public void the_user_should_see_the_product_suites_sub_tab(List<String> expectedNamesList) {
         // Write code here that turns the phrase above into concrete actions
 
         // expectedNamesList is a list of Strings, but actualNamesList is not a list, but just a String!
-        String actualNamesList=homePage.solutionsSubLinkAsOneWebElement.getText();
+        String actualNamesList=homePage.productSuiteAsOneWebElement.getText();
 
         System.out.println("actualNamesList = " + actualNamesList);
         System.out.println("expectedNamesList = " + expectedNamesList);
@@ -50,13 +50,40 @@ public class Modulus_StepDefinition {
             actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "").trim();
 
         }
+        //actualNamesList might have more messages or names than expectedNames. No need to verify descriptions.
+        //System.out.println("actualNamesList size = " + actualNamesList.trim().length());
+        // text content of actualNamesList and expectedNamesList is the same.
+        ////Assert.assertTrue("still some chars in actual text", actualNamesList.trim().length()==0);
+        //System.out.println("actualNamesList = " + actualNamesList);
+
+    }
+
+    @Then("the user should see the solutions by need sub tab:")
+    public void the_user_should_see_the_solutions_by_need_sub_tab(List<String> expectedNamesList){
+
+        // expectedNamesList is a list of Strings, but actualNamesList is not a list, but just a String!
+        String actualNamesList=homePage.solutionsSubLinkAsOneWebElement.getText();
+
+        System.out.println("actualNamesList = " + actualNamesList);
+        System.out.println("expectedNamesList = " + expectedNamesList);
+
+        for (int i = 0; i < expectedNamesList.size(); i++) {
+            // asserts that everything in expectedList is inside the actualNamesList
+            Assert.assertTrue("got difference!", actualNamesList.contains(expectedNamesList.get(i)));
+            // remove everything in expectedList from the actualNamesList once
+            actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "").trim();
+
+        }
         //actualNamesList might have white space only at best
         System.out.println("actualNamesList size = " + actualNamesList.trim().length());
         // text content of actualNamesList and expectedNamesList is the same.
         Assert.assertTrue("still some chars in actual text", actualNamesList.trim().length()==0);
         //System.out.println("actualNamesList = " + actualNamesList);
 
+
     }
+
+
 
     @When("the user clicks on the whyUKG module")
     public void the_user_clicks_on_the_why_ukg_module() throws InterruptedException {

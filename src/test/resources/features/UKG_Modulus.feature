@@ -1,15 +1,27 @@
 @smoke
 Feature: Users verifying several modules
 
-  Scenario: users accessing Solution module
+  Scenario: users accessing the Product Suites sub tab under Solution module
     Given user is on homepage
     When the user clicks on the Solution module
-    Then the user should see the links:
-    | UKG Solutions           |
-    | UKG Pro                 |
-    | UKG Dimensions          |
-    | UKG Ready               |
-    | UKG HR Service Delivery |
+    Then the user should see the Product Suites sub tab:
+      | Product Suites          |
+      | UKG Pro                 |
+      | UKG Dimensions          |
+      | UKG Ready               |
+      | UKG HR Service Delivery |
+      | See All Products        |
+
+
+  Scenario: users accessing solutions by need sub tab under Solution module
+    Given user is on homepage
+    When the user clicks on the Solution module
+    And the user should see the solutions by need sub tab:
+      | Solutions By Need           |
+      | Human Capital Management    |
+      | Workforce Management        |
+      | Payroll                     |
+      | Solutions For Your Industry |
 
   Scenario: accessing whyUKG modulus
     Given user is on homepage

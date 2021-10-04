@@ -50,7 +50,7 @@ public class Hooks {
         }
 
         BrowserUtils.sleep(1);
-        //Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 

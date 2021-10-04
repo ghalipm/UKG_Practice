@@ -23,7 +23,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//a[.='Partners'])[2]")
     public WebElement partnersTab;
 
-    @FindBy(xpath="(//*[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[2]")
+    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
     public WebElement partnersName;
 
     @FindBy(xpath="(//a[.='About Us'])[2]")
@@ -69,8 +69,12 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
     public List<WebElement> solutionsDropDownList; // not a list of WebElements, but a WebElement!
      */
-    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    @FindBy(xpath="//ul[@class='uk-width-2-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container']")
     public WebElement solutionsSubLinkAsOneWebElement;
+
+    @FindBy(xpath="//ul[@class='uk-width-1 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container']")
+    public WebElement productSuiteAsOneWebElement;
+
 
     @FindBy(xpath="//h1")
     public WebElement whyUKGHeader;
