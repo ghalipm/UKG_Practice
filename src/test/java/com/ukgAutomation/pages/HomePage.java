@@ -29,8 +29,10 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//a[.='About Us'])[2]")
     public WebElement aboutUsTab;
 
-    @FindBy(xpath="(//img[@class='gartner-logo'])[2]")
-    public WebElement aboutUsLogo;
+    //@FindBy(xpath="(//img[@class='gartner-logo'])[2]")
+    //@FindBy(xpath="(//a[.='About UKG'])[2]")
+    @FindBy(xpath="//h1")
+    public WebElement aboutUkgText;
 
     @FindBy(xpath="(//a[@href='/contact'])[1]")
     public WebElement contactTab;

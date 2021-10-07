@@ -154,10 +154,11 @@ public class Modulus_StepDefinition {
        homePage.aboutUsTab.click();
     }
 
-    @Then("the user should see the gartner logo")
-    public void the_user_should_see_the_gartner_logo() {
-        // the logo is displayed
-        Assert.assertTrue(homePage.aboutUsLogo.isDisplayed());
+    @Then("the user should see the text About UKG")
+    public void the_user_should_see_the_text_about_ukg() {
+        // the text is displayed
+        BrowserUtils.waitForVisibility(homePage.aboutUkgText, 3);
+        Assert.assertTrue(homePage.aboutUkgText.isDisplayed());
     }
 
 

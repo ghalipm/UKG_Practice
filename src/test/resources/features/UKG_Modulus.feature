@@ -47,7 +47,7 @@ Feature: Users verifying several modules
   Scenario: accessing about us modulus
     Given user is on homepage
     When the user clicks on the about us modulus
-    Then the user should see the gartner logo
+    Then the user should see the text About UKG
 
   Scenario: accessing contact modulus
     Given user is on homepage
