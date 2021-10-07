@@ -8,7 +8,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath="//span[.='Disagree and close']")
     public WebElement popUpDisagreeAndClose;
 
-    @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
+    @FindBy(xpath="//span[.='Solutions']")
     public WebElement solutionsTab;
 
     @FindBy(xpath="(//a[.='Why UKG'])[2]")
@@ -20,7 +20,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath="//h1")
     public WebElement customersHeader;
 
-    @FindBy(xpath="(//a[.='Partners'])[2]")
+    @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
     public WebElement partnersTab;
 
     @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
@@ -57,10 +57,12 @@ public class HomePage extends BasePage{
     public WebElement careerHeader;
 
 
-    @FindBy(xpath="//a[@class='uk-navbar-toggle icon-globe ukg-icon-primary']")
+   // globe icon tab:
+   @FindBy(xpath="//a[@class='coh-link uk-navbar-toggle icon-globe ukg-icon-primary']")
     public WebElement globTab;
 
-    @FindBy(xpath="//ul[@class='uk-nav uk-navbar-dropdown-nav']")
+   // text field of the globe icon
+    @FindBy(xpath="//ul[@class='links uk-nav  uk-navbar-dropdown-nav']")
     public WebElement globIconWE;
 
 
@@ -69,15 +71,16 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
     public List<WebElement> solutionsDropDownList; // not a list of WebElements, but a WebElement!
      */
-    @FindBy(xpath="//ul[@class='uk-width-2-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container']")
+    @FindBy(xpath="(//ul[@class='uk-width-1 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[2]")
     public WebElement solutionsSubLinkAsOneWebElement;
 
-    @FindBy(xpath="//ul[@class='uk-width-1 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container']")
+    @FindBy(xpath="(//ul[@class='uk-width-1 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
     public WebElement productSuiteAsOneWebElement;
 
 
     @FindBy(xpath="//h1")
     public WebElement whyUKGHeader;
+
 
     public void clickOn(WebElement webElement){
         webElement.click();

@@ -13,11 +13,11 @@ Feature: Users verifying several modules
       | See All Products        |
 
 
-  Scenario: users accessing solutions by need sub tab under Solution module
+  Scenario: users accessing by solutions sub tab under Solution module
     Given user is on homepage
     When the user clicks on the Solution module
     And the user should see the solutions by need sub tab:
-      | Solutions By Need           |
+      | By Solution                 |
       | Human Capital Management    |
       | Workforce Management        |
       | Payroll                     |
@@ -86,17 +86,11 @@ Feature: Users verifying several modules
     Given user is on homepage
     When the user clicks on the globe modulus
     Then the user should see the languages  list:
-      | English                  |
-      | English (Canada)         |
-      | English (United Kingdom) |
-      | English (Australia)      |
-      | English (India)          |
-      | Français (Canada)        |
-      | Français                 |
-      | Español (México)         |
-      | Español (España)         |
-      | Deutsch                  |
-      | Nederlands               |
+      | English |
+      | French  |
+      | Dutch   |
+      | Spanish |
+      | German  |
 
 
 
