@@ -86,12 +86,12 @@ Feature: Users verifying several modules
     Given user is on homepage
     When the user clicks on the globe modulus
     Then the user should see the languages  list:
-      | English |
-      | French  |
-      | Dutch   |
-      | Spanish |
-      | German  |
-
+      | English    |
+      | Français   |
+      | Nederlands |
+      | Español    |
+      | Deutsch    |
+# Crtl+Alt+L: alignes the columns
 
 
 

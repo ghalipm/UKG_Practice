@@ -77,7 +77,7 @@ public class Modulus_StepDefinition {
         //actualNamesList might have white space only at best
         System.out.println("actualNamesList size = " + actualNamesList.trim().length());
         // text content of actualNamesList and expectedNamesList is the same.
-        Assert.assertTrue("still some chars in actual text", actualNamesList.trim().length()==0);
+        Assert.assertEquals("still some chars in actual text", 0, actualNamesList.trim().length());
         //System.out.println("actualNamesList = " + actualNamesList);
 
 
