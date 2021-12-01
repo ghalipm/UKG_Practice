@@ -33,8 +33,8 @@ public class Modulus_StepDefinition {
         homePage.clickOn(homePage.solutionsTab);
     }
 
-    @Then("the user should see the Product Suites sub tab:")
-    public void the_user_should_see_the_product_suites_sub_tab(List<String> expectedNamesList) {
+    @Then("the user should see the Product Suites sub title:")
+    public void the_user_should_see_the_product_suites_sub_title(List<String> expectedNamesList) {
         // Write code here that turns the phrase above into concrete actions
 
         // expectedNamesList is a list of Strings, but actualNamesList is not a list, but just a String!
@@ -58,8 +58,8 @@ public class Modulus_StepDefinition {
 
     }
 
-    @Then("the user should see the solutions by need sub tab:")
-    public void the_user_should_see_the_solutions_by_need_sub_tab(List<String> expectedNamesList){
+    @When("the user should see By Solutions title and sub modules:")
+    public void the_user_should_see_by_solutions_title_and_sub_modules(List<String> expectedNamesList){
 
         // expectedNamesList is a list of Strings, but actualNamesList is not a list, but just a String!
         String actualNamesList=homePage.solutionsSubLinkAsOneWebElement.getText();

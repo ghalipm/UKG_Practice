@@ -1,10 +1,10 @@
 @smoke
 Feature: Users verifying several modules
 
-  Scenario: users accessing the Product Suites sub tab under Solution module
+  Scenario: users accessing the Product Suites sub title under Solution module
     Given user is on homepage
     When the user clicks on the Solution module
-    Then the user should see the Product Suites sub tab:
+    Then the user should see the Product Suites sub title:
       | Product Suites          |
       | UKG Pro                 |
       | UKG Dimensions          |
@@ -13,10 +13,10 @@ Feature: Users verifying several modules
       | See All Products        |
 
 
-  Scenario: users accessing by solutions sub tab under Solution module
+  Scenario: users accessing by solutions sub title under Solution module
     Given user is on homepage
     When the user clicks on the Solution module
-    And the user should see the solutions by need sub tab:
+    And the user should see By Solutions title and sub modules:
       | By Solution                 |
       | Human Capital Management    |
       | Workforce Management        |
