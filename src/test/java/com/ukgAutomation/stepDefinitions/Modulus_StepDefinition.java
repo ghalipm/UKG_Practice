@@ -40,6 +40,7 @@ public class Modulus_StepDefinition {
         // expectedNamesList is a list of Strings, but actualNamesList is not a list, but just a String!
         String actualNamesList=homePage.productSuiteAsOneWebElement.getText();
 
+
         System.out.println("actualNamesList = " + actualNamesList);
         System.out.println("expectedNamesList = " + expectedNamesList);
 
