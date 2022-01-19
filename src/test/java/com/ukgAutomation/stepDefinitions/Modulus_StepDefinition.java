@@ -107,11 +107,26 @@ public class Modulus_StepDefinition {
         homePage.customersTab.click();
     }
 
-    @Then("the user should see the UKG Customers header")
-    public void the_user_should_see_the_ukg_customers_header() {
-        // Write code here that turns the phrase above into concrete actions
-        Assert.assertTrue(homePage.customersHeader.getText().equals("UKG Customers"));
+    @Then("the user should see the customers' list:")
+    public void the_user_should_see_the_customers_list(List<String> expectedCustomersList) {
+        String actualCustomers=homePage.customersTextField.getText();
+        System.out.println("actualCustomers = " + actualCustomers);
+        System.out.println("expectedCustomersList = " + expectedCustomersList);
+
+        for (String s : expectedCustomersList) {
+            //System.out.println("actualCustomers = " + actualCustomers);
+            Assert.assertTrue(actualCustomers.contains(s));
+            actualCustomers = actualCustomers.replaceFirst(s, "");
+        }
+
+        actualCustomers=actualCustomers.trim();
+        System.out.println("actualCustomers = " + actualCustomers);
+
+        //Assert.assertTrue(actualCustomers.isEmpty());
+        Assert.assertEquals(0, actualCustomers.length());
+
     }
+
 
 
     @When("the user clicks on the Partners modulus")

@@ -14,17 +14,20 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//a[.='Why UKG'])[2]")
     public WebElement whyUKGTab;
 
-    @FindBy(xpath="(//a[.='Customers'])[2]")
+    @FindBy(xpath="(//a[.='Customers'])[3]")
     public WebElement customersTab;
 
-    @FindBy(xpath="//h1")
-    public WebElement customersHeader;
+    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    public WebElement customersTextField;
 
-    @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
+    //@FindBy(xpath="(//a[@aria-expanded='false'])[1]")
+    @FindBy(xpath="(//a[.='Partners'])[2]")
     public WebElement partnersTab;
 
-    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    //@FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[2]")
     public WebElement partnersName;
+
 
     @FindBy(xpath="(//a[.='About Us'])[2]")
     public WebElement aboutUsTab;

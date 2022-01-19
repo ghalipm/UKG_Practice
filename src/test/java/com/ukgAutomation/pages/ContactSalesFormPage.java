@@ -1,10 +1,12 @@
 package com.ukgAutomation.pages;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.security.Key;
 import java.util.Random;
 
 public class ContactSalesFormPage extends BasePage{
@@ -76,7 +78,7 @@ public class ContactSalesFormPage extends BasePage{
 
     // ticking the box:
     public void tickCustomerBox(){
-        customerTickBox.click();
+        customerTickBox.sendKeys(Keys.ENTER);
     }
 
     // placing comments:
@@ -89,7 +91,7 @@ public class ContactSalesFormPage extends BasePage{
     public void submitForm(){
         //submitButton.click(); // click did not work, but submit did the job!
 
-        submitButton.submit();
+        submitButton.sendKeys(Keys.ENTER);
     }
 
     // filling the form:

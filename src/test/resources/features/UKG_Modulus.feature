@@ -1,5 +1,5 @@
-@smoke
-Feature: Users verifying several modules
+@
+Feature: Users verifying modules
 
   Scenario: users accessing the Product Suites sub title under Solution module
     Given user is on homepage
@@ -31,7 +31,11 @@ Feature: Users verifying several modules
   Scenario: accessing customers modulus
     Given user is on homepage
     When the user clicks on the Customers modulus
-    Then the user should see the UKG Customers header
+    Then the user should see the customers' list:
+      | Customers                |
+      | UKG Customer Experience |
+
+# Crtl+Alt+L: alignes the columns
 
   Scenario: accessing partners modulus
     Given user is on homepage
