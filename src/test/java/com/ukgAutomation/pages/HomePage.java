@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage{
+    @FindBy(xpath="//a[@aria-label='Close Alert']")
+    public WebElement closeAlert;
+
 
     @FindBy(xpath="//span[.='Disagree and close']")
     public WebElement popUpDisagreeAndClose;
@@ -14,24 +17,25 @@ public class HomePage extends BasePage{
     @FindBy(xpath="(//a[.='Why UKG'])[2]")
     public WebElement whyUKGTab;
 
-    @FindBy(xpath="(//a[.='Customers'])[2]")
+    @FindBy(xpath="(//a[.='Customers'])[3]")
     public WebElement customersTab;
 
-    @FindBy(xpath="//h1")
-    public WebElement customersHeader;
+    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    public WebElement customersNames;
 
-    @FindBy(xpath="(//a[@aria-expanded='false'])[1]")
+    //@FindBy(xpath="(//a[@aria-expanded='false'])[1]")
+    @FindBy(xpath="(//a[.='Partners'])[2]")
     public WebElement partnersTab;
 
-    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[1]")
+    @FindBy(xpath="(//ul[@class='uk-width-1-3 uk-nav uk-navbar-dropdown-nav ukg-navbar-dropdown-container'])[2]")
     public WebElement partnersName;
 
-    @FindBy(xpath="(//a[.='About Us'])[2]")
+    @FindBy(xpath="//span[.='About Us']")
     public WebElement aboutUsTab;
 
     //@FindBy(xpath="(//img[@class='gartner-logo'])[2]")
     //@FindBy(xpath="(//a[.='About UKG'])[2]")
-    @FindBy(xpath="//h1")
+    @FindBy(xpath="(//a[@href=\"/about-us\"])[2]")
     public WebElement aboutUkgText;
 
     @FindBy(xpath="(//a[@href='/contact'])[1]")

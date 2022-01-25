@@ -1,6 +1,7 @@
 package com.ukgAutomation.pages;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -8,8 +9,14 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Random;
 
 public class ContactSalesFormPage extends BasePage{
-    HomePage homePage=new HomePage();
     Random random=new Random();
+
+    @FindBy(xpath="//button[@id='didomi-notice-learn-more-button']")
+    public WebElement contactSalesLearnMoreButtonFirst;
+
+    @FindBy(xpath="//button[@class='didomi-components-button didomi-button didomi-button-standard standard-button']")
+    public WebElement contactSalesLearnMoreButtonSecond;
+
 
     @FindBy(xpath="//input[@id='edit-ukg-customer']")
     //@FindBy(id="input#edit-ukg-customer")
@@ -64,8 +71,9 @@ public class ContactSalesFormPage extends BasePage{
 
 
     //@FindBy(xpath="//*[@id='edit-actions-submit']")
-    @FindBy(id="edit-actions-submit")
-    public WebElement submitButton;
+    //@FindBy(id="edit-actions-submit")
+    @FindBy(xpath="//input[@id='edit-actions-submit']")
+    public WebElement submitButton; // LEARN MORE button on Contact form
 
     //input[@id='edit-actions-submit']
 
@@ -76,7 +84,7 @@ public class ContactSalesFormPage extends BasePage{
 
     // ticking the box:
     public void tickCustomerBox(){
-        customerTickBox.click();
+        customerTickBox.sendKeys(Keys.ENTER);
     }
 
     // placing comments:
@@ -88,8 +96,9 @@ public class ContactSalesFormPage extends BasePage{
     // submit the form:
     public void submitForm(){
         //submitButton.click(); // click did not work, but submit did the job!
+        //submitButton.submit();
+        submitButton.sendKeys(Keys.ENTER);
 
-        submitButton.submit();
     }
 
     // filling the form:
@@ -176,7 +185,7 @@ public class ContactSalesFormPage extends BasePage{
 
 
         //submit the form
-        submitForm();
+        //submitForm();
 
 
             /*

@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Modulus_StepDefinition {
     public void user_is_on_homepage() {
         // Write code here that turns the phrase above into concrete actions
         Driver.getDriver().get(ConfigurationReader.getProperty("url1"));
-        homePage.popUpDisagreeAndClose.click();
+        homePage.closeAlert.sendKeys(Keys.ENTER);
 
     }
 
@@ -44,11 +45,11 @@ public class Modulus_StepDefinition {
         System.out.println("actualNamesList = " + actualNamesList);
         System.out.println("expectedNamesList = " + expectedNamesList);
 
-        for (int i = 0; i < expectedNamesList.size(); i++) {
+        for (String s : expectedNamesList) {
             // asserts that everything in expectedList is inside the actualNamesList
-            Assert.assertTrue("got difference!", actualNamesList.contains(expectedNamesList.get(i)));
-           // remove everything in expectedList from the actualNamesList once
-            actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "").trim();
+            Assert.assertTrue("got difference!", actualNamesList.contains(s));
+            // remove everything in expectedList from the actualNamesList once
+            actualNamesList = replaceOnce(actualNamesList, s, "").trim();
 
         }
         //actualNamesList might have more messages or names than expectedNames. No need to verify descriptions.
@@ -68,11 +69,11 @@ public class Modulus_StepDefinition {
         System.out.println("actualNamesList = " + actualNamesList);
         System.out.println("expectedNamesList = " + expectedNamesList);
 
-        for (int i = 0; i < expectedNamesList.size(); i++) {
+        for (String s : expectedNamesList) {
             // asserts that everything in expectedList is inside the actualNamesList
-            Assert.assertTrue("got difference!", actualNamesList.contains(expectedNamesList.get(i)));
+            Assert.assertTrue("got difference!", actualNamesList.contains(s));
             // remove everything in expectedList from the actualNamesList once
-            actualNamesList=replaceOnce(actualNamesList, expectedNamesList.get(i), "").trim();
+            actualNamesList = replaceOnce(actualNamesList, s, "").trim();
 
         }
         //actualNamesList might have white space only at best
@@ -87,7 +88,7 @@ public class Modulus_StepDefinition {
 
 
     @When("the user clicks on the whyUKG module")
-    public void the_user_clicks_on_the_why_ukg_module() throws InterruptedException {
+    public void the_user_clicks_on_the_why_ukg_module() {
         // Write code here that turns the phrase above into concrete actions
         homePage.whyUKGTab.click();
 
@@ -97,7 +98,7 @@ public class Modulus_StepDefinition {
     public void the_user_should_see_the_header(String string) {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("homePage.whyUKGHeader.getText().equals(string) = " + homePage.whyUKGHeader.getText().equals(string));
-        Assert.assertTrue(homePage.whyUKGHeader.getText().equals(string));
+        Assert.assertEquals(homePage.whyUKGHeader.getText(), string);
 
     }
 
@@ -107,10 +108,22 @@ public class Modulus_StepDefinition {
         homePage.customersTab.click();
     }
 
-    @Then("the user should see the UKG Customers header")
-    public void the_user_should_see_the_ukg_customers_header() {
-        // Write code here that turns the phrase above into concrete actions
-        Assert.assertTrue(homePage.customersHeader.getText().equals("UKG Customers"));
+    @Then("the user should see the customers list:")
+    public void the_user_should_see_the_customers_list(List<String> expectedCustomersList) {
+
+        String actualCustomersNames=homePage.customersNames.getText();
+        System.out.println("actualCustomersNames = " + actualCustomersNames);
+        for (String s : expectedCustomersList) {
+
+            // asserts that everything in expectedList is inside the actualNamesList
+            Assert.assertTrue("got difference!", actualCustomersNames.contains(s));
+            // remove everything in expectedList from the actualNamesList once
+            actualCustomersNames = replaceOnce(actualCustomersNames,s, "");
+
+        }
+
+        Assert.assertTrue(actualCustomersNames.trim().isEmpty());
+
     }
 
 
@@ -130,11 +143,11 @@ public class Modulus_StepDefinition {
         String actualPartnersNames=homePage.partnersName.getText();
         System.out.println("actualPartnersNames = " + actualPartnersNames);
 
-        for (int i = 0; i < expectedPartnersList.size(); i++) {
+        for (String s : expectedPartnersList) {
             // asserts that everything in expectedList is inside the actualNamesList
-            Assert.assertTrue("got difference!", actualPartnersNames.contains(expectedPartnersList.get(i)));
+            Assert.assertTrue("got difference!", actualPartnersNames.contains(s));
             // remove everything in expectedList from the actualNamesList once
-            actualPartnersNames=replaceOnce(actualPartnersNames, expectedPartnersList.get(i), "");
+            actualPartnersNames = replaceOnce(actualPartnersNames, s, "");
 
         }
 
@@ -143,7 +156,7 @@ public class Modulus_StepDefinition {
         //actualNamesList might have white space only at best
         System.out.println("actualPartnersNames size = " + actualPartnersNames.trim().length());
         // text content of actualNamesList and expectedNamesList is the same.
-        Assert.assertTrue("more chars in actual text", actualPartnersNames.trim().length()==0);
+        Assert.assertEquals("more chars in actual text", 0, actualPartnersNames.trim().length());
         //System.out.println("actualNamesList = " + actualPartnersNames);
 
     }
@@ -174,7 +187,7 @@ public class Modulus_StepDefinition {
         // Write code here that turns the phrase above into concrete actions
         String expected="Contact UKG";
         System.out.println("homePage.contactHeader.getText() = " + homePage.contactHeader.getText());
-        Assert.assertTrue(homePage.contactHeader.getText().equals(expected));
+        Assert.assertEquals(homePage.contactHeader.getText(), expected);
     }
 
 
@@ -188,7 +201,7 @@ public class Modulus_StepDefinition {
         String expectedSupport="UKG Support";
         System.out.println("homePage.supportHeader.getText() = " + homePage.supportHeader.getText());
         System.out.println("expectedSupport = " + expectedSupport);
-        Assert.assertTrue(expectedSupport.equals(homePage.supportHeader.getText().trim()));
+        Assert.assertEquals(expectedSupport, homePage.supportHeader.getText().trim());
     }
 
 
@@ -203,7 +216,7 @@ public class Modulus_StepDefinition {
         System.out.println("expectedBlog = " + expectedBlog);
         System.out.println("homePage.blogHeader.getText() = " + homePage.blogHeader.getText());
 
-        Assert.assertTrue(expectedBlog.trim().equals(homePage.blogHeader.getText().trim()));
+        Assert.assertEquals(expectedBlog.trim(), homePage.blogHeader.getText().trim());
     }
 
 
@@ -217,7 +230,7 @@ public class Modulus_StepDefinition {
         String expectedText=" Search Jobs ";
         System.out.println("expectedText = " + expectedText);
         System.out.println("homePage.careerHeader.getText() = " + homePage.careerHeader.getText());
-        Assert.assertTrue(expectedText.trim().equals(homePage.careerHeader.getText().trim()));
+        Assert.assertEquals(expectedText.trim(), homePage.careerHeader.getText().trim());
 
     }
 
@@ -237,11 +250,11 @@ public class Modulus_StepDefinition {
         System.out.println("expectedText = " + expectedText);
 
 
-        for (int i = 0; i < expectedText.size(); i++) {
+        for (String s : expectedText) {
             // asserts that everything in expectedList is inside the actualNamesList
-            Assert.assertTrue("got difference!", actualText.contains(expectedText.get(i)));
+            Assert.assertTrue("got difference!", actualText.contains(s));
             // remove everything in expectedList from the actualNamesList once
-            actualText=replaceOnce(actualText, expectedText.get(i), " ").trim();
+            actualText = replaceOnce(actualText, s, " ").trim();
 
         }
         System.out.println("==========actual text after replacement=====");
@@ -249,7 +262,7 @@ public class Modulus_StepDefinition {
         //actualText has no more elements, or has zero elements.
         System.out.println("actualNamesList size = " + actualText.length());
         // text content of actualNamesList and expectedNamesList is the same.
-        Assert.assertTrue("still some chars in actual text", actualText.length()==0);
+        Assert.assertEquals("still some chars in actual text", 0, actualText.length());
 
 
     }
@@ -257,16 +270,22 @@ public class Modulus_StepDefinition {
     // Contact Sales Form:
     @Then("the user should see the Contact Sales form")
     public void the_user_should_see_the_contact_sales_form() {
-        homePage.contactTab.click();
+        homePage.contactTab.sendKeys(Keys.ENTER);
+        BrowserUtils.waitForClickability(contactSalesFormPage.contactSalesLearnMoreButtonFirst,3);
+        contactSalesFormPage.contactSalesLearnMoreButtonFirst.sendKeys(Keys.ENTER);
+        BrowserUtils.waitForClickability(contactSalesFormPage.contactSalesLearnMoreButtonSecond,3);
+        contactSalesFormPage.contactSalesLearnMoreButtonSecond.sendKeys(Keys.ENTER);
     }
 
-    @Then("user can fill the form with valid info and be able to send by clicking {string} button")
-    public void user_can_fill_the_form_with_valid_info_and_be_able_to_send_by_clicking_button(String string) throws InterruptedException {
+    @Then("user can fill the form with valid info and be able to send by clicking LEARN MORE button")
+    public void user_can_fill_the_form_with_valid_info_and_be_able_to_send_by_clicking_learn_more_button() {
        // tick the customer box
-        contactSalesFormPage.tickCustomerBox();
+       // contactSalesFormPage.tickCustomerBox(); // No more tick on the page!
        // fill the form
-        BrowserUtils.waitForClickability(contactSalesFormPage.submitButton,1);
-       contactSalesFormPage.fillingTheForm();
+
+        BrowserUtils.waitForClickability(contactSalesFormPage.submitButton,3);
+        contactSalesFormPage.fillingTheForm();
+        contactSalesFormPage.submitForm();
 
     }
 
