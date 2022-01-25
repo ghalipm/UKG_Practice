@@ -10,7 +10,7 @@ public class SimpleTest {
 
     /**
      * Assuming that we captured the UI dashboard numbers from library1 app
-     * Now we want to makes sure those numbers match the database data
+     * Now we want to make sure those numbers match the database data
      */
     @Test
     public void testDashboardNumbers(){
