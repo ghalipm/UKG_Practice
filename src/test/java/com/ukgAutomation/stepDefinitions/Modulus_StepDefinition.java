@@ -23,8 +23,8 @@ public class Modulus_StepDefinition {
     @Given("user is on homepage")
     public void user_is_on_homepage() {
         // Write code here that turns the phrase above into concrete actions
-        Driver.getDriver().get(ConfigurationReader.getProperty("url1"));
-        homePage.closeAlert.sendKeys(Keys.ENTER);
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        //homePage.closeAlert.sendKeys(Keys.ENTER);
 
     }
 
@@ -194,6 +194,7 @@ public class Modulus_StepDefinition {
     @When("the user clicks on the support modulus")
     public void the_user_clicks_on_the_support_modulus() {
         homePage.supportTab.click();
+        homePage.closeAlert.sendKeys(Keys.ENTER);
     }
 
     @Then("the user should see the UKG Support header")
