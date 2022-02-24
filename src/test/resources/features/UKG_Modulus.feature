@@ -21,6 +21,7 @@ Feature: Users verifying several modules
       | Workforce Management        |
       | Payroll                     |
       | Time and Attendance         |
+      | Employee Scheduling         |
       | Solutions For Your Industry |
   @wp3
   Scenario: accessing whyUKG modulus

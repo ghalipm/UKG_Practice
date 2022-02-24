@@ -194,7 +194,7 @@ public class Modulus_StepDefinition {
     @When("the user clicks on the support modulus")
     public void the_user_clicks_on_the_support_modulus() {
         homePage.supportTab.click();
-        homePage.closeAlert.sendKeys(Keys.ENTER);
+        //homePage.closeAlert.sendKeys(Keys.ENTER);
     }
 
     @Then("the user should see the UKG Support header")
