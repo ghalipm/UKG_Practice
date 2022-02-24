@@ -38,6 +38,7 @@ Feature: Users verifying several modules
       | UKG Customer Experience |
 
     # Crtl+Alt+L: aligns the columns
+  # mark a block and ctrl+/, that comments out that block
   @wp5
   Scenario: accessing partners modulus
     Given user is on homepage
