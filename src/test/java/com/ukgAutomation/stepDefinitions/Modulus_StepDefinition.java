@@ -71,6 +71,7 @@ public class Modulus_StepDefinition {
 
         for (String s : expectedNamesList) {
             // asserts that everything in expectedList is inside the actualNamesList
+            BrowserUtils.waitForVisibility(homePage.solutionsSubLinkAsOneWebElement, 5);
             Assert.assertTrue("got difference!", actualNamesList.contains(s));
             // remove everything in expectedList from the actualNamesList once
             actualNamesList = replaceOnce(actualNamesList, s, "").trim();
