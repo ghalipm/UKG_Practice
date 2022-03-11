@@ -209,7 +209,8 @@ public class Modulus_StepDefinition {
 
     @When("the user clicks on the Blog modulus")
     public void the_user_clicks_on_the_blog_modulus() {
-      homePage.blogTab.click();
+        BrowserUtils.waitForClickability(homePage.blogTab, 5);
+      homePage.blogTab.sendKeys(Keys.ENTER);
     }
 
     @Then("the user should see the UKG Blog header")
@@ -218,7 +219,7 @@ public class Modulus_StepDefinition {
         System.out.println("expectedBlog = " + expectedBlog);
         System.out.println("homePage.blogHeader.getText() = " + homePage.blogHeader.getText());
 
-        Assert.assertEquals(expectedBlog.trim(), homePage.blogHeader.getText().trim());
+        Assert.assertEquals("UK Blogs got difference!",expectedBlog.trim(), homePage.blogHeader.getText().trim());
     }
 
 
